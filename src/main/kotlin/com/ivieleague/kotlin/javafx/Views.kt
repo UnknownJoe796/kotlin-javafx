@@ -6,6 +6,7 @@ import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.geometry.VPos
 import javafx.scene.Node
+import javafx.scene.canvas.Canvas
 import javafx.scene.control.*
 import javafx.scene.layout.*
 
@@ -73,13 +74,6 @@ class _TabPane : TabPane() {
     }
 }
 
-class _ScrollPane : ScrollPane() {
-    val Node.lparams get() = object {}
-    fun <T : Node> T.lparams(setup: Any.() -> Unit): T {
-        lparams.apply(setup); return this
-    }
-}
-
 class _SplitPane : SplitPane() {
     val Node.lparams get() = SplitPaneLayoutParams(this)
     fun <T : Node> T.lparams(setup: SplitPaneLayoutParams.() -> Unit): T {
@@ -103,7 +97,6 @@ fun Pane.flowPane(setup: _FlowPane.() -> Unit) = _FlowPane().apply(setup).also {
 fun Pane.tilePane(setup: _TilePane.() -> Unit) = _TilePane().apply(setup).also { children += it }
 fun Pane.anchorPane(setup: _AnchorPane.() -> Unit) = _AnchorPane().apply(setup).also { children += it }
 fun Pane.tabPane(setup: _TabPane.() -> Unit) = _TabPane().apply(setup).also { children += it }
-fun Pane.scrollPane(setup: _ScrollPane.() -> Unit) = _ScrollPane().apply(setup).also { children += it }
 fun Pane.splitPane(setup: _SplitPane.() -> Unit) = _SplitPane().apply(setup).also { children += it }
 fun Pane.titledPane(setup: _TitledPane.() -> Unit) = _TitledPane().apply(setup).also { children += it }
 
@@ -258,6 +251,7 @@ fun TabPane.lparams(node: Node) = object {}
 fun ScrollPane.lparams(node: Node) = object {}
 fun TitledPane.lparams(node: Node) = object {}
 
+fun Pane.scrollPane(setup: ScrollPane.() -> Unit) = ScrollPane().apply(setup).also { children += it }
 fun Pane.button(setup: Button.() -> Unit) = Button().apply(setup).also { children += it }
 fun Pane.checkBox(setup: CheckBox.() -> Unit) = CheckBox().apply(setup).also { children += it }
 fun Pane.colorPicker(setup: ColorPicker.() -> Unit) = ColorPicker().apply(setup).also { children += it }
@@ -277,6 +271,7 @@ fun Pane.splitMenuButton(setup: SplitMenuButton.() -> Unit) = SplitMenuButton().
 fun Pane.textArea(setup: TextArea.() -> Unit) = TextArea().apply(setup).also { children += it }
 fun Pane.textField(setup: TextField.() -> Unit) = TextField().apply(setup).also { children += it }
 fun Pane.toolBar(setup: ToolBar.() -> Unit) = ToolBar().apply(setup).also { children += it }
+fun Pane.canvas(setup: Canvas.() -> Unit) = Canvas().apply(setup).also { children += it }
 
 fun Menu.menuItem(setup: MenuItem.() -> Unit) = MenuItem().apply(setup).also { items += it }
 fun Menu.menu(setup: Menu.() -> Unit) = Menu().apply(setup).also { items += it }
