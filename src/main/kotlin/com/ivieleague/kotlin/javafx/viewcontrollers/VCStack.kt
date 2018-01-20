@@ -24,4 +24,20 @@ class VCStack {
         stack.add(vc)
         onChange.invokeAll(vc)
     }
+
+    fun swap(vc: ViewController) {
+        stack.set(stack.lastIndex, vc)
+        onChange.invokeAll(vc)
+    }
+
+    fun refresh() {
+        onChange.invokeAll(current)
+    }
+
+    fun root() {
+        val first = stack.first()
+        stack.clear()
+        stack.add(first)
+        onChange.invokeAll(current)
+    }
 }

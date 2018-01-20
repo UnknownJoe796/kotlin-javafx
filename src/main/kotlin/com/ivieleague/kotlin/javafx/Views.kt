@@ -8,6 +8,7 @@ import javafx.geometry.VPos
 import javafx.scene.Node
 import javafx.scene.canvas.Canvas
 import javafx.scene.control.*
+import javafx.scene.image.ImageView
 import javafx.scene.layout.*
 
 
@@ -257,6 +258,7 @@ fun Pane.checkBox(setup: CheckBox.() -> Unit) = CheckBox().apply(setup).also { c
 fun Pane.colorPicker(setup: ColorPicker.() -> Unit) = ColorPicker().apply(setup).also { children += it }
 fun Pane.hyperlink(setup: Hyperlink.() -> Unit) = Hyperlink().apply(setup).also { children += it }
 fun Pane.label(setup: Label.() -> Unit) = Label().apply(setup).also { children += it }
+fun Pane.imageView(setup: ImageView.() -> Unit) = ImageView().apply(setup).also { children += it }
 fun Pane.menuBar(setup: MenuBar.() -> Unit) = MenuBar().apply(setup).also { children += it }
 fun Pane.menuButton(setup: MenuButton.() -> Unit) = MenuButton().apply(setup).also { children += it }
 fun Pane.pagination(setup: Pagination.() -> Unit) = Pagination().apply(setup).also { children += it }
